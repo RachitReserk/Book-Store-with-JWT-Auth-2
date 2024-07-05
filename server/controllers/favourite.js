@@ -1,8 +1,10 @@
-const router = require('express').Router()
-const User = require('../models/user')
-const {authenticateToken} = require('./userAuth')
+import express from 'express';
+const favRouter = express.Router();
 
-router.put('/get-fav',authenticateToken,async(req,res) => {
+import User from '../models/user.js'
+import authenticateToken from './userAuth.js'
+
+favRouter.put('/get-fav',authenticateToken,async(req,res) => {
 try {
     const {bookId , id} = req.headers
     const userData = await User.findById(id);
@@ -18,7 +20,7 @@ try {
 }
 })
 
-router.delete('/delete-fav',authenticateToken,async(req,res) => {
+favRouter.delete('/delete-fav',authenticateToken,async(req,res) => {
     try {
         const {bookId , id} = req.headers
         const userData = await User.findById(id);
@@ -35,7 +37,7 @@ router.delete('/delete-fav',authenticateToken,async(req,res) => {
     }
     })
 
-router.get('/get-fav',authenticateToken,async (req,res) => {
+favRouter.get('/get-fav',authenticateToken,async (req,res) => {
     try {
         const {id} = req.headers
         const userData = await User.findById(id);
@@ -50,4 +52,4 @@ router.get('/get-fav',authenticateToken,async (req,res) => {
     }
 })
 
-module.exports = router
+export default favRouter

@@ -1,11 +1,15 @@
-const router = require('express').Router();
-const User = require('../models/user')
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-require('dotenv').config()
-const {authenticateToken} = require('./userAuth')
+import express from 'express';
+const userRouter = express.Router();
 
-router.post('/sign-up',async(req,res) =>{
+import User from '../models/user.js'
+import bcrypt from 'bcryptjs'
+import  jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+dotenv.config()
+
+import authenticateToken from './userAuth.js'
+
+userRouter.post('/sign-up',async(req,res) =>{
     try {
     const {username , email , password , address} = req.body
     if(username.length < 4){
@@ -42,7 +46,7 @@ router.post('/sign-up',async(req,res) =>{
     }
 })
 
-router.post('/sign-in',async(req,res) => {
+userRouter.post('/sign-in',async(req,res) => {
    try {
       const {username,password} = req.body
       const existingUser = await User.findOne({username})
@@ -69,18 +73,18 @@ router.post('/sign-in',async(req,res) => {
    }
 })
 
-router.get('/userInfo',authenticateToken,async (req,res) => {
+userRouter.get('/userInfo',authenticateToken,async (req,res) => {
    try {
       const {id} = req.headers
       const data = await User.findById(id).select("-password")
       res.status(200).json(data)
-
+      
    } catch (error) {
       res.status(500).json({message:"Internal server error"})
    }
 })
 
-router.put('/updateAddress',authenticateToken , async(req,res) => {
+userRouter.put('/updateAddress',authenticateToken , async(req,res) => {
 try {
    const {id} = req.headers
    const {address} = req.body
@@ -90,4 +94,5 @@ try {
    res.status(500).json({message:"Internal server error"})
 }
 })
-module.exports = router
+
+export default userRouter

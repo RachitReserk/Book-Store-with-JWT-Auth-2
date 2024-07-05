@@ -1,10 +1,11 @@
-const router = require('express').Router()
-const User = require('../models/user')
-const jwt = require('jsonwebtoken')
-const {authenticateToken} = require('./userAuth')
-const Book = require('../models/books')
+import express from 'express';
+const bookRouter = express.Router();
 
-router.post('/add-book',authenticateToken, async(req,res) => {
+import User from '../models/user.js'
+import authenticateToken from './userAuth.js'
+import Book from '../models/books.js'
+
+bookRouter.post('/add-book',authenticateToken, async(req,res) => {
 try {
     const {id} = req.headers
     const user = await User.findById(id)
@@ -26,7 +27,7 @@ try {
 }
 })
 
-router.put('/update-book',authenticateToken, async(req,res) => {
+bookRouter.put('/update-book',authenticateToken, async(req,res) => {
     try {
     const {id} = req.headers
     const user = await User.findById(id)
@@ -49,7 +50,7 @@ router.put('/update-book',authenticateToken, async(req,res) => {
     }
     })
 
-router.delete("/delete-book",authenticateToken,async(req,res)=>{
+bookRouter.delete("/delete-book",authenticateToken,async(req,res)=>{
     try {
         const {id} = req.headers
         const user = await User.findById(id)
@@ -65,7 +66,7 @@ router.delete("/delete-book",authenticateToken,async(req,res)=>{
 } 
 })
 
-router.get('/get-all-books',async(req,res) => {
+bookRouter.get('/get-all-books',async(req,res) => {
     try {
         const books = await Book.find().sort({createdAt: -1})
         return res.json({
@@ -77,7 +78,7 @@ router.get('/get-all-books',async(req,res) => {
     }
 })
 
-router.get('/get-recent-book',async(req,res) => {
+bookRouter.get('/get-recent-book',async(req,res) => {
     try {
         const books = await Book.find().sort({createdAt: -1}).limit(4)
         return res.json({
@@ -89,7 +90,7 @@ router.get('/get-recent-book',async(req,res) => {
     }
 })
 
-router.get('/get-book/:id',async(req,res) =>
+bookRouter.get('/get-book/:id',async(req,res) =>
     {
     try {
         const {id} = req.params;
@@ -103,4 +104,4 @@ router.get('/get-book/:id',async(req,res) =>
     }
     })
 
-module.exports = router
+export default bookRouter
