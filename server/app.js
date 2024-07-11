@@ -11,6 +11,7 @@ import userRouter from './controllers/userManagement.js'
 import bookRouter from './controllers/bookManagement.js'
 import favRouter from './controllers/favourite.js'
 import cartRouter from './controllers/carts.js'
+import orderRouter from './controllers/orders.js'
 
 mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log('Connected to MongoDB')
