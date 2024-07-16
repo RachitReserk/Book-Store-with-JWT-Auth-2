@@ -2,7 +2,7 @@ import express from 'express';
 const bookRouter = express.Router();
 
 import User from '../models/user.js'
-import authenticateToken from './userAuth.js'
+import authenticateToken from '../utils/userAuth.js'
 import Book from '../models/books.js'
 
 bookRouter.post('/add-book',authenticateToken, async(req,res) => {

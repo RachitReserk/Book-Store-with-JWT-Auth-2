@@ -1,6 +1,6 @@
 import express from 'express'
 const cartRouter = express.Router()
-import authenticateToken from './userAuth.js'
+import authenticateToken from '../utils/userAuth.js'
 import User from '../models/user.js'
 
 cartRouter.put("/add-to-cart",authenticateToken,async (req,res) => {

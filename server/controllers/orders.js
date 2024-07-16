@@ -1,6 +1,6 @@
 import express from 'express'
 const orderRouter = express.Router()
-import authenticateToken from './userAuth.js'
+import authenticateToken from '../utils/userAuth.js'
 import Order from '../models/order.js'
 import Book from '../models/books.js'
 import User from '../models/user.js'

@@ -7,7 +7,7 @@ import  jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 dotenv.config()
 
-import authenticateToken from './userAuth.js'
+import authenticateToken from '../utils/userAuth.js'
 
 userRouter.post('/sign-up',async(req,res) =>{
     try {

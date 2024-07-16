@@ -2,7 +2,7 @@ import express from 'express';
 const favRouter = express.Router();
 
 import User from '../models/user.js'
-import authenticateToken from './userAuth.js'
+import authenticateToken from '../utils/userAuth.js'
 
 favRouter.put('/get-fav',authenticateToken,async(req,res) => {
 try {
