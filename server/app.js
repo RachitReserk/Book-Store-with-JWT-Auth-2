@@ -21,6 +21,7 @@ app.use("/api",userRouter)
 app.use('/api',bookRouter)
 app.use('/api',favRouter)
 app.use("/api",cartRouter)
+app.use("/api",orderRouter)
 
 app.listen(process.env.PORT,() => {
     console.log(`Server started at port ${process.env.PORT}`)

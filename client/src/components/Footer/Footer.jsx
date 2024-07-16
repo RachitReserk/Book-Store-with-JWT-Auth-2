@@ -23,25 +23,7 @@ const Footer = () => {
          <div className="col-span-2 grid grid-cols-2 md:grid-cols-3 gap-6">
            <div>
             <h1 className="text-xl font-semibold">Quick Links</h1>
-            <ul className="space-y-3 mt-6">
-                <li className="footer-link">Home</li>
-                <li className="footer-link">About</li>
-                <li className="footer-link">Contact</li>
-                <li className="footer-link">Book</li>
-            </ul>
-           </div>
-           <div>
-            <h1 className="text-xl font-semibold">Quick Links</h1>
             <ul className="space-y-3 mt-6" >
-                <li className="footer-link">Home</li>
-                <li className="footer-link">About</li>
-                <li className="footer-link">Contact</li>
-                <li className="footer-link">Book</li>
-            </ul>
-           </div>
-           <div>
-            <h1 className="text-xl font-semibold">Quick Links</h1>
-            <ul  className="space-y-3 mt-6" >
                 <li className="footer-link">Home</li>
                 <li className="footer-link">About</li>
                 <li className="footer-link">Contact</li>
