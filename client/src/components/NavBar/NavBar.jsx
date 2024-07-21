@@ -49,7 +49,7 @@ const Slidedown = (delay) => {
 };
 
 const Navbar = () => {
-  const [user , setUser] = useState(null)
+  const [user , setUser] = useState("null")
   const [isOpen, setOpen] = useState(false)
 
   if(user != null)
