@@ -78,7 +78,7 @@ bookRouter.get('/get-all-books',async(req,res) => {
     }
 })
 
-bookRouter.get('/get-recent-book',async(req,res) => {
+bookRouter.get('/get-recent-books',async(req,res) => {
     try {
         const books = await Book.find().sort({createdAt: -1}).limit(4)
         return res.json({

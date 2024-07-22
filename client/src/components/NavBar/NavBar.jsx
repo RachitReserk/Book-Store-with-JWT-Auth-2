@@ -49,7 +49,7 @@ const Slidedown = (delay) => {
 };
 
 const Navbar = () => {
-  const [user , setUser] = useState("null")
+  const [user , setUser] = useState(null)
   const [isOpen, setOpen] = useState(false)
 
   if(user != null)
@@ -114,7 +114,7 @@ const Navbar = () => {
             </div>
     </div>
     {isOpen ? 
-      <div className="h-[50] rounded font-league z-[40] flex flex-col top-0 left-0 bg-orange-200 items-center gap-12 justify-between">
+      <div className="h-[50] md:hidden rounded font-league z-[40] flex flex-col top-0 left-0 bg-orange-200 items-center gap-12 justify-between">
       {
               NavMenu.map((menu) => {
                 return(
@@ -212,7 +212,7 @@ else if(user == null)
             </div>
       </div>
       {isOpen ? 
-      <div className="h-[50] rounded font-league z-[40] flex flex-col top-0 left-0 bg-orange-200 items-center gap-12 justify-between">
+      <div className="h-[50] md:hidden rounded font-league z-[40] flex flex-col top-0 left-0 bg-orange-200 items-center gap-12 justify-between">
       {
               NavMenu.map((menu) => {
                 return(
