@@ -1,10 +1,12 @@
 import React from 'react';
 import{ motion } from 'framer-motion';
 import{SlideUp} from "../Hero/Hero";
+import { Link } from 'react-router-dom';
 
 const BookCard = ({ data }) => {
   return (
     <div>
+    <Link>
       <motion.div
                             variants={SlideUp(data.delay)}
                             initial = "hidden"
@@ -17,6 +19,7 @@ const BookCard = ({ data }) => {
                                 <p className="text-xl text-red-600">Rs.{data.price}</p>
                                 </div> 
                             </motion.div>
+    </Link>
     </div>
   );
 };
