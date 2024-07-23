@@ -10,6 +10,7 @@ import SignIn from './pages/SignIn.jsx'
 import SignUp from './pages/SignUp.jsx'
 import Profile from './pages/Profile.jsx'
 import Cart from './pages/Cart.jsx'
+import BookDetails from './components/BookDetails/BookDetails.jsx'
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path='/signup' element={<SignUp/>}></Route>
           <Route path='/cart' element={<Cart/>}></Route>
           <Route path='/profile' element={<Profile/>}></Route>
+          <Route path='/book-details/:id' element={<BookDetails/>}></Route>
         </Routes>
         <Footer />
       </Router>

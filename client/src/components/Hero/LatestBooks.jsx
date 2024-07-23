@@ -24,7 +24,7 @@ const LatestBooks = () => {
          whileInView= "show"
          className="text-4xl text-center font-league font-semibold uppercase py-8">Recently Added</motion.h3>
       <div className='my-8 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4'>
-        {Book.map((item, i) => (
+        {Book && Book.map((item, i) => (
           <div key={i}>
             <BookCard data={item} />
           </div>

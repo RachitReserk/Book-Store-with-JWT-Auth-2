@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const BookCard = ({ data }) => {
   return (
     <div>
-    <Link>
+    <Link to={`/book-details/${data._id}`}>
       <motion.div
                             variants={SlideUp(data.delay)}
                             initial = "hidden"
