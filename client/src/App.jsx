@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Home from './pages/Home.jsx'
 import Navbar from './components/NavBar/NavBar.jsx'
 import Footer from './components/Footer/Footer.jsx'

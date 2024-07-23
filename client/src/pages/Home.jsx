@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState , useEffect} from 'react'
 import Hero from '../components/Hero/Hero'
 import LatestBooks from '../components/Hero/LatestBooks'
 
