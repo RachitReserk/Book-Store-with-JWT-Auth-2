@@ -16,8 +16,6 @@ const LatestBooks = () => {
     fetch()
   }, [])
 
-  console.log(Book)
-
   return (
     <div className='mt-8 px-4'>
       <motion.h3
