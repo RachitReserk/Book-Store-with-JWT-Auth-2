@@ -27,7 +27,6 @@ const Hero = () => {
   <main>
     <div className="container min-h-[600px] flex justify-center relative z-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap -24 place-items-center justify-between">
-        {/*text content here*/}
           <div className="space-y-3 mt-14 text-center md:text-left md:mt-0">
             <motion.h1 
             variants={SlideUp(0.5)}
@@ -58,8 +57,6 @@ const Hero = () => {
             </Link>
             </div>
           </div>
-        {/*Images here*/}
-
         <div>
           <motion.img
           initial = {{opacity: 0 , rotate: 20 , x:200 , y:100}}

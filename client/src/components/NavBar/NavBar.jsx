@@ -55,7 +55,6 @@ const Navbar = () => {
   if(user != null)
   return <nav>
     <div className="z-[50] container mx-auto flex justify-between items-center font-league">
-        {/* logo section */}
         <motion.img
         initial = {{opacity : 0}}
         animate = {{opacity : 1}}
@@ -64,7 +63,6 @@ const Navbar = () => {
         alt=""
         className="w-24 block"
         />
-        {/* menu section */}
          <div className= "hidden md:block">
            <ul className= "flex gap-12">
             {
@@ -90,7 +88,6 @@ const Navbar = () => {
             }
             </ul> 
          </div>
-        {/* button section */}
         <div className="flex gap-6 hidden md:flex">
         <Link to='/profile'>
         <motion.div variants={Slidedown(1)}
@@ -160,7 +157,6 @@ const Navbar = () => {
 else if(user == null)
     return <nav className="">
       <div className="z-[50] container mx-auto flex justify-between items-center font-league">
-          {/* logo section */}
           <motion.img
           initial = {{opacity : 0}}
           animate = {{opacity : 1}}
@@ -169,7 +165,6 @@ else if(user == null)
           alt=""
           className="w-24 block"
           />
-          {/* menu section */}
            <div className= "hidden md:block">
              <ul className= "flex gap-12">
               {
