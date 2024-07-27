@@ -51,6 +51,17 @@ const SignUp = () => {
         </input>
       </div>
       <div className='mt-4'>
+        <label htmlFor=''>
+          Address
+        </label>
+        <textarea
+        className='w-full mt-2 p-2 outline-none'
+        rows="5"
+        placeholder='address'
+        name='address'
+        required></textarea>
+      </div>
+      <div className='mt-4'>
         <button className='transition duration-300 ease-in-out hover:scale-110 w-full bg-yellow-300 font-semibold py-2 rounded'>Sign-Up</button>
       </div>
      </div>

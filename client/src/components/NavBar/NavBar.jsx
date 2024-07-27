@@ -6,6 +6,7 @@ import {motion } from 'framer-motion';
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Hamburger from 'hamburger-react'
+import { useSelector } from "react-redux";
 
 const NavMenu = [
     {
@@ -49,10 +50,10 @@ const Slidedown = (delay) => {
 };
 
 const Navbar = () => {
-  const [user , setUser] = useState(null)
   const [isOpen, setOpen] = useState(false)
-
-  if(user != null)
+  const user = useSelector(state => state.auth.isLoggedIn)
+  console.log(user)
+  if(user)
   return <nav>
     <div className="z-[50] container mx-auto flex justify-between items-center font-league">
         <motion.img
@@ -154,7 +155,7 @@ const Navbar = () => {
        <div></div>}
   </nav>;
 
-else if(user == null)
+else
     return <nav className="">
       <div className="z-[50] container mx-auto flex justify-between items-center font-league">
           <motion.img

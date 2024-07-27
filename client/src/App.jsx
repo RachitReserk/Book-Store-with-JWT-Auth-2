@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Home from './pages/Home.jsx'
 import Navbar from './components/NavBar/NavBar.jsx'
 import Footer from './components/Footer/Footer.jsx'
-import {BrowserRouter as Router , Routes , Route} from "react-router-dom"
+import {Routes , Route} from "react-router-dom"
 import Store from './pages/Store.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
@@ -15,7 +15,6 @@ import BookDetails from './components/BookDetails/BookDetails.jsx'
 const App = () => {
   return (
     <div className="cursor-default realtive overflow-x-hidden bg-white2 text-dark">
-      <Router>
       <Navbar/>
         <Routes>
           <Route exact path='/' element={<Home/>}></Route>
@@ -29,7 +28,6 @@ const App = () => {
           <Route path='/book-details/:id' element={<BookDetails/>}></Route>
         </Routes>
         <Footer />
-      </Router>
     </div>
   )
 }
