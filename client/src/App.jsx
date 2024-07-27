@@ -25,7 +25,7 @@ const App = () => {
       pauseOnFocusLoss
       draggable
       pauseOnHover={false}
-      theme="colored"
+      theme="light"
       transition: Bounce
       />
       <Navbar/>

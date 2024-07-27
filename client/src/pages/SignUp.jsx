@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import {Link, useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { SlideUp } from '../components/Hero/Hero'
 import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
@@ -20,11 +20,11 @@ const SignUp = () => {
   const submit = async () => {
   try {
     if(userInfo.username === '' || userInfo.password === '' || userInfo.email === '' || userInfo.address === '')
-      alert("All fields are required")
+      toast("All fields are required")
     else{
     const response = await axios.post('/api/sign-up',userInfo)
     navigate('/signin')  
-    toast("Sign-Up successful ✅")
+    toast("✅ Sign-Up successful")
   }
   } catch (error) {
     console.log(error)
