@@ -52,7 +52,6 @@ const Slidedown = (delay) => {
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false)
   const user = useSelector(state => state.auth.isLoggedIn)
-  console.log(user)
   if(user)
   return <nav>
     <div className="z-[50] container mx-auto flex justify-between items-center font-league">

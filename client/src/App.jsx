@@ -11,10 +11,23 @@ import SignUp from './pages/SignUp.jsx'
 import Profile from './pages/Profile.jsx'
 import Cart from './pages/Cart.jsx'
 import BookDetails from './components/BookDetails/BookDetails.jsx'
-
+import { ToastContainer} from 'react-toastify';
 const App = () => {
   return (
     <div className="cursor-default realtive overflow-x-hidden bg-white2 text-dark">
+      <ToastContainer
+      position="top-right"
+      autoClose={2500}
+      hideProgressBar
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover={false}
+      theme="colored"
+      transition: Bounce
+      />
       <Navbar/>
         <Routes>
           <Route exact path='/' element={<Home/>}></Route>
