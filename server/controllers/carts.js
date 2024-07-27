@@ -25,7 +25,7 @@ cartRouter.put("/add-to-cart",authenticateToken,async (req,res) => {
             "message":"Book added to cart"
          })
     } catch (error) {
-        res.status(500).json({message:"Internal server error"})
+        return res.status(500).json({message:"Internal server error"})
     }
 })
 
@@ -43,7 +43,7 @@ try {
      })
 } catch (error) {
     console.log(error)
-    res.status(500).json({message:"Internal Server Error"})
+    return res.status(500).json({message:"Internal Server Error"})
 }    
 })
 
@@ -58,7 +58,7 @@ cartRouter.get("/get-cart",authenticateToken,async(req,res) => {
             data:cart
         })
         } catch (error) {
-        res.status(500).json({message:"Internal Server error"})
+        return res.status(500).json({message:"Internal Server error"})
     }
 })
 export default cartRouter

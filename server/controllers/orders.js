@@ -26,8 +26,7 @@ orderRouter.post('/place-order',authenticateToken,async (req,res) => {
         })
     }
     catch(error){
-        console.log(error)
-        res.status(500).json({
+        return res.status(500).json({
             message:"Internal Server Error"
         }) 
     }

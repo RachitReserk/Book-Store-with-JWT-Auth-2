@@ -42,7 +42,7 @@ userRouter.post('/sign-up',async(req,res) =>{
      return res.status(200).json({message:"SignUp successful"})     
     } catch (error
     ) {
-       res.status(500).json({message:"Internal server error"}) 
+       return res.status(500).json({message:"Internal server error"}) 
     }
 })
 
@@ -51,7 +51,7 @@ userRouter.post('/sign-in',async(req,res) => {
       const {username,password} = req.body
       const existingUser = await User.findOne({username})
       if(!existingUser){
-         res.status(400).json({message:"Invalid credentials"})
+        return res.status(400).json({message:"Invalid credentials"})
       }
       await bcrypt.compare(password,existingUser.password,(err,data) =>{
          if(data){
@@ -69,7 +69,7 @@ userRouter.post('/sign-in',async(req,res) => {
       })
    } catch (error
    ) {
-      res.status(500).json({message:"Internal server error"})
+      return res.status(500).json({message:"Internal server error"})
    }
 })
 
@@ -80,7 +80,7 @@ userRouter.get('/userInfo',authenticateToken,async (req,res) => {
       res.status(200).json(data)
       
    } catch (error) {
-      res.status(500).json({message:"Internal server error"})
+      return res.status(500).json({message:"Internal server error"})
    }
 })
 
@@ -91,7 +91,7 @@ try {
    await User.findByIdAndUpdate(id,{address: address})
    res.status(200).json({message:"address updated"})
 } catch (error) {
-   res.status(500).json({message:"Internal server error"})
+   return res.status(500).json({message:"Internal server error"})
 }
 })
 

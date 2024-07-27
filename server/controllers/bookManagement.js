@@ -23,7 +23,7 @@ try {
     await book.save();
     res.status(200).json({message:"book stored !"})
 } catch (error) {
-   res.status(500).json({message:"Internal server error"}) 
+   return res.status(500).json({message:"Internal server error"}) 
 }
 })
 
@@ -46,7 +46,7 @@ bookRouter.put('/update-book',authenticateToken, async(req,res) => {
 
         res.status(200).json({message:"book updated !"})
     } catch (error) {
-       res.status(500).json({message:"Internal server error"}) 
+       return res.status(500).json({message:"Internal server error"}) 
     }
     })
 
@@ -62,7 +62,7 @@ bookRouter.delete("/delete-book",authenticateToken,async(req,res)=>{
         return res.status(200).json({message:"Book deleted"})
 
     } catch (error) {
-       res.status(500).json({message:"Internal server error"}) 
+       return res.status(500).json({message:"Internal server error"}) 
 } 
 })
 
@@ -74,7 +74,7 @@ bookRouter.get('/get-all-books',async(req,res) => {
             data:books
         })    
     } catch (error) {
-        res.status(500).json({message:"Internal server error"})     
+        return res.status(500).json({message:"Internal server error"})     
     }
 })
 
@@ -86,7 +86,7 @@ bookRouter.get('/get-recent-books',async(req,res) => {
             data:books
         })    
     } catch (error) {
-        res.status(500).json({message:"Internal server error"})     
+        return res.status(500).json({message:"Internal server error"})     
     }
 })
 
@@ -100,7 +100,7 @@ bookRouter.get('/get-book/:id',async(req,res) =>
             data: book
         })    
     } catch (error) {
-        res.status(500).json({message:"Internal server error"})      
+        return res.status(500).json({message:"Internal server error"})      
     }
     })
 

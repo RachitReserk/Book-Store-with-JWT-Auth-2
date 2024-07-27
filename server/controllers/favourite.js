@@ -16,7 +16,7 @@ try {
     await User.findByIdAndUpdate(id,{$push:{favourites:bookId}})
     return res.status(200).json({message:"Book added to favourites"})
 } catch (error) {
-    res.status(500).json({message:"Internal Server error"})
+    return res.status(500).json({message:"Internal Server error"})
 }
 })
 
@@ -33,7 +33,7 @@ favRouter.delete('/delete-fav',authenticateToken,async(req,res) => {
         return res.status(200).json({message:"Book removed from favourites"})
 
     } catch (error) {
-        res.status(500).json({message:"Internal Server error"})
+        return res.status(500).json({message:"Internal Server error"})
     }
     })
 
@@ -48,7 +48,7 @@ favRouter.get('/get-fav',authenticateToken,async (req,res) => {
             data:favouriteBooks
         })
         } catch (error) {
-        res.status(500).json({message:"Internal Server error"})
+        return res.status(500).json({message:"Internal Server error"})
     }
 })
 

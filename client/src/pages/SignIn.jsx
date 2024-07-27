@@ -28,7 +28,7 @@ const SignIn = () => {
     toast("✅ Sign-In successful")
   }
   } catch (error) {
-    console.log(error)
+    toast(error.response.data.message)
   }
   }
 
@@ -53,6 +53,7 @@ const SignIn = () => {
         name='username'
         required
         value={userInfo.username}
+        onChange={change}
         ></input>
       </div>
       <div className='mt-4'>
@@ -65,11 +66,12 @@ const SignIn = () => {
         placeholder='password'
         name='password'
         value={userInfo.password}
+        onChange={change}
         > 
         </input>
       </div>
       <div className='mt-4'>
-        <button className='transition duration-300 ease-in-out hover:scale-110 w-full bg-yellow-300 font-semibold py-2 rounded'>Sign-In</button>
+        <button className='transition duration-300 ease-in-out hover:scale-110 w-full bg-yellow-300 font-semibold py-2 rounded' onClick={submit}>Sign-In</button>
       </div>
      </div>
      </motion.h1>
