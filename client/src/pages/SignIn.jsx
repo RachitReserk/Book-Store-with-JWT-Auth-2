@@ -5,15 +5,16 @@ import { SlideUp } from '../components/Hero/Hero'
 import axios from 'axios'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import {authActions} from '../store/auth.js'
+import {useDispatch} from 'react-redux'
 const SignIn = () => {
-
+  
   const [userInfo,setuserInfo] = useState({
     username:"",
     password:"",
      })
     const navigate = useNavigate()
-
+    const dispatch = useDispatch()
   const change = (event) => {
     const {name , value} = event.target
     setuserInfo({...userInfo,[name]:value})
@@ -26,6 +27,10 @@ const SignIn = () => {
     const response = await axios.post('/api/sign-in',userInfo)
     navigate('/')  
     toast("✅ Sign-In successful")
+    dispatch(authActions.login())
+    localStorage.setItem('id',response.data.id)
+    localStorage.setItem('token',response.data.token)
+    localStorage.setItem('role',response.data.role)
   }
   } catch (error) {
     toast(error.response.data.message)

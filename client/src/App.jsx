@@ -12,7 +12,22 @@ import Profile from './pages/Profile.jsx'
 import Cart from './pages/Cart.jsx'
 import BookDetails from './components/BookDetails/BookDetails.jsx'
 import { ToastContainer} from 'react-toastify';
+import { useDispatch , useSelector } from 'react-redux'
+import { authActions } from './store/auth.js'
+
 const App = () => {
+  const dispatch = useDispatch()
+  const role = useSelector((state) => state.auth.role)
+  useEffect(() => {
+    if(
+      localStorage.getItem("id") &&
+      localStorage.getItem("token") &&
+      localStorage.getItem("role")
+    ){
+      dispatch(authActions.login())
+      dispatch(authActions.changeRole(localStorage.getItem("role")))
+    }
+  },[])
   return (
     <div className="cursor-default realtive overflow-x-hidden bg-white2 text-dark">
       <ToastContainer
