@@ -19,7 +19,8 @@ const SignIn = () => {
     const {name , value} = event.target
     setuserInfo({...userInfo,[name]:value})
   }
-  const submit = async () => {
+  const submit = async (e) => {
+    e.preventDefault();
   try {
     if(userInfo.username === '' || userInfo.password === '')
       toast("All fields are required")
@@ -39,7 +40,7 @@ const SignIn = () => {
 
   return (
     <div className='bg-yellow-100 lg:h-screen h-auto py-8 px-12 flex items-center justify-center'>
-     <div className='bg-yellow-200 rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6'>
+     <form onSubmit={submit} className='bg-yellow-200 rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6'>
      <motion.h1
             variants={SlideUp(0.1)}
             initial = "hidden"
@@ -76,11 +77,11 @@ const SignIn = () => {
         </input>
       </div>
       <div className='mt-4'>
-        <button className='transition duration-300 ease-in-out hover:scale-110 w-full bg-yellow-300 font-semibold py-2 rounded' onClick={submit}>Sign-In</button>
+        <button className='transition duration-300 ease-in-out hover:scale-110 w-full bg-yellow-300 font-semibold py-2 rounded' type="submit">Sign-In</button>
       </div>
      </div>
      </motion.h1>
-     </div>
+     </form>
      </div>      
   )
 }

@@ -32,7 +32,7 @@ const App = () => {
     <div className="cursor-default realtive overflow-x-hidden bg-white2 text-dark">
       <ToastContainer
       position="top-right"
-      autoClose={2500}
+      autoClose={1500}
       hideProgressBar
       newestOnTop={false}
       closeOnClick

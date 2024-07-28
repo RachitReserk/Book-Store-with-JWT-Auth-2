@@ -17,13 +17,14 @@ const SignUp = () => {
     const {name , value} = event.target
     setuserInfo({...userInfo,[name]:value})
   }
-  const submit = async () => {
+  const submit = async (e) => {
+    e.preventDefault();
   try {
     if(userInfo.username === '' || userInfo.password === '' || userInfo.email === '' || userInfo.address === '')
       toast("All fields are required")
     else{
     const response = await axios.post('/api/sign-up',userInfo)
-    navigate('/signin')  
+    navigate('/signin')
     toast("✅ Sign-Up successful")
   }
   } catch (error) {
@@ -32,7 +33,7 @@ const SignUp = () => {
   }
   return (
     <div className='bg-yellow-100 lg:h-screen h-auto py-8 px-12 flex items-center justify-center'>
-     <div className='bg-yellow-200 rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6'>
+     <form onSubmit={submit} className='bg-yellow-200 rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6'>
      <motion.h1
             variants={SlideUp(0.1)}
             initial = "hidden"
@@ -96,12 +97,12 @@ const SignUp = () => {
         required></textarea>
       </div>
       <div className='mt-4'>
-        <button onClick={submit} className='transition duration-300 ease-in-out hover:scale-110 w-full bg-yellow-300 font-semibold py-2 rounded'>
+        <button type="submit" className='transition duration-300 ease-in-out hover:scale-110 w-full bg-yellow-300 font-semibold py-2 rounded'>
           Sign-Up</button>
       </div>
      </div>
      </motion.h1>
-     </div>
+     </form>
      </div>   
   )
 }
