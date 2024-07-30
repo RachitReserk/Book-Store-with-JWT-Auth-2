@@ -6,6 +6,7 @@ import Spinner from '../spinner.jsx'
 import Heart from "react-animated-heart";
 import { FaCartPlus } from "react-icons/fa";
 import { useSelector } from 'react-redux'
+import { Tooltip } from 'react-tooltip'
 
 const optionsCursorTrueWithMargin = {
   followCursor: true,
