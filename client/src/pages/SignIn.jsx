@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { SlideUp } from '../components/Hero/Hero'
 import axios from 'axios'
@@ -78,6 +78,14 @@ const SignIn = () => {
       </div>
       <div className='mt-4'>
         <button className='transition duration-300 ease-in-out hover:scale-110 w-full bg-yellow-300 font-semibold py-2 rounded' type="submit">Sign-In</button>
+      </div>
+      <div className='mt-4 flex items-center justify-center'>
+        or
+      </div>
+      <div className='mt-3 flex items-center justify-center'>
+        <div className='flex flex-row gap-2'>
+        Don't have an account ? <div className='underline transition duration-300 ease-in-out hover:scale-110 '><Link to='/signup'>Sign-Up</Link></div>
+        </div>
       </div>
      </div>
      </motion.h1>
