@@ -7,9 +7,12 @@ import Store from './pages/Store.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import SignIn from './pages/SignIn.jsx'
+import UserHistory from './components/Profile/orderHistory.jsx'
 import SignUp from './pages/SignUp.jsx'
+import Fav from './components/Profile/fav.jsx'
 import Profile from './pages/Profile.jsx'
 import Cart from './pages/Cart.jsx'
+import Setting from './components/Profile/setting.jsx'
 import BookDetails from './components/BookDetails/BookDetails.jsx'
 import { ToastContainer} from 'react-toastify';
 import { useDispatch , useSelector } from 'react-redux'
@@ -52,7 +55,11 @@ const App = () => {
           <Route path='/signin' element={<SignIn/>}></Route>
           <Route path='/signup' element={<SignUp/>}></Route>
           <Route path='/cart' element={<Cart/>}></Route>
-          <Route path='/profile' element={<Profile/>}></Route>
+          <Route path='/profile' element={<Profile/>}>
+           <Route index element={<Fav/>}></Route>
+           <Route path='/profile/orderHistory' element={<UserHistory/>}></Route>
+           <Route path='/profile/settings' element={<Setting/>}></Route>
+          </Route>
           <Route path='/book-details/:id' element={<BookDetails/>}></Route>
         </Routes>
         <Footer />
