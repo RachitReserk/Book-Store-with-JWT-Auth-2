@@ -6,12 +6,26 @@ import Spinner from '../spinner.jsx'
 import Heart from "react-animated-heart";
 import { FaCartPlus } from "react-icons/fa";
 import { useSelector } from 'react-redux'
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
 
 const optionsCursorTrueWithMargin = {
   followCursor: true,
   shiftX: 20,
   shiftY: 0
 };
+
+const LightTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: theme.palette.common.white,
+    color: 'rgba(0, 0, 0, 0.87)',
+    boxShadow: theme.shadows[1],
+    fontSize: 16,
+  },
+}));
 
 const BookDetails = () => {
     const [isClick, setClick] = useState(false);
@@ -37,7 +51,7 @@ const BookDetails = () => {
         <div className='px-12 py-8 flex md:flex-row flex-col  gap-8'>
         <div className='bg-yellow-100 rounded-2xl p-4 h-[80vh] lg:h-[88vh] w-full lg:w-[3/6] flex flex-col items-center justify-center'><img  className="h-[60vh] object-fit " src={Book.url} alt="" />
         {isLoggedIn === true  && role === "user" && (
-        <div className='transition duration-300 ease-in-out hover:scale-125'><Heart className='mt-4' isClick={isClick} onClick={() => setClick(!isClick)} /></div>  
+        <LightTooltip title="Add to favourites" placement='top'><div className='transition duration-300 ease-in-out hover:scale-125'><Heart className='mt-4' isClick={isClick} onClick={() => setClick(!isClick)} /></div></LightTooltip>
         )}
         </div>
         <div className='p-4 w-full lg:w-3/6'>
@@ -50,13 +64,16 @@ const BookDetails = () => {
         <p className='mt-4 text-3xl font-semibold'>
            Price: Rs.{Book.price}
         </p>
+        <LightTooltip title="Add to cart" placement='top'>
         <div className='transition duration-300 ease-in-out hover:scale-110 flex md:flex-row bg-yellow-300 rounded-full mt-12 justify-center'>
-          {isLoggedIn === true && role === "user" && (
+          {isLoggedIn === true && role === "user" && ( 
               <button className='rounded-full text-5xl p-2 mb-1'>
               <FaCartPlus />
-            </button>   
-          )}
+            </button>
+            
+          )} 
          </div>
+         </LightTooltip>  
         </div> 
        </div>
     )}
