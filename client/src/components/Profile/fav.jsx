@@ -3,7 +3,8 @@ import axios from 'axios'
 import BookCard from '../BookCard/BookCard'
 import {motion} from "framer-motion"
 import { SlideUp } from '../Hero/Hero'
-import { TbMoodEmpty } from "react-icons/tb";
+import { TbMoodEmpty } from "react-icons/tb"
+import Loader from '../spinner'
 
 const fav = () => {
   const [favbook,setFavbook] = useState()
@@ -20,17 +21,23 @@ useEffect(() => {
   }
   fetch()
 },[])
-  
-  if(size === 0)
-  return (
+
+  if(!favbook)
+   return (
+   <div className='flex text-7xl h-screen font-league flew-col items-center justify-center'>
+    <Loader></Loader>
+   </div>
+  )
+
+  else if(favbook && size === 0)
+  return ( 
     <div>
-      {size === 0 && (
         <div className='flex text-7xl h-screen font-league flew-col items-center justify-center'>
         <TbMoodEmpty size={90}/>No Favourites? sad
         </div>
-      )}
     </div>
   )
+
   else{
     return (
       <div>
