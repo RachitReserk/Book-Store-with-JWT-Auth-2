@@ -31,15 +31,15 @@ const userSchema = new mongoose.Schema({
     },
     favourites:[{
         type:mongoose.Types.ObjectId,
-        red:"books"
+        ref:"books"
     }],
     cart:[{
         type:mongoose.Types.ObjectId,
-        red:"books"
+        ref:"books"
     }],
     orders:[{
         type:mongoose.Types.ObjectId,
-        red:"order"
+        ref:"order"
     }],
 },{timestamps:true});
 

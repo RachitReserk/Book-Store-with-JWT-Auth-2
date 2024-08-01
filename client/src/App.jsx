@@ -32,7 +32,7 @@ const App = () => {
     }
   },[])
   return (
-    <div className="cursor-default realtive overflow-x-hidden bg-white2 text-dark">
+    <div className="scroll-smooth cursor-default realtive overflow-x-hidden bg-white2 text-dark">
       <ToastContainer
       position="top-right"
       autoClose={1500}

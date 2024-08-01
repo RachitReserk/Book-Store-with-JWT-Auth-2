@@ -8,7 +8,7 @@ const Footer = () => {
       whileInView={{opacity:1}}
       transition={{duration: 1}}
 
-      className="w-full absolute bg-gray-400"
+      className="w-full flex flex-row items-center justify-center absolute bg-gray-400 text-3xlfont-league font-semibold underline uppercase"
     >
       <div className="ml-5 container py-14">
          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 ">
@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="space-y-3 lg:max-w-[300px]">
             <img src={Logo} alt="" className="w-24" />
             <p>Darn it.</p>
-            <a href="#" className="inline-block mt-6 text-sm">To get your book published contact trachit752@gmail.com</a>
+            <a href="/" className="inline-block mt-6 text-sm">To get your book published contact trachit752@gmail.com</a>
         </div>
         {/* Quick links */}
 
