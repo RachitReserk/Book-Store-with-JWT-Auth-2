@@ -8,21 +8,21 @@ const Footer = () => {
       whileInView={{opacity:1}}
       transition={{duration: 1}}
 
-      className="bg-gray-400"
+      className="w-full absolute bg-gray-400"
     >
-      <div className="container py-14">
+      <div className="ml-5 container py-14">
          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 ">
         {/* brand info */}
         <div className="space-y-3 lg:max-w-[300px]">
             <img src={Logo} alt="" className="w-24" />
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad excepturi minima repellat!.</p>
-            <a href="#" className="inline-block mt-6 text-sm">Contact@BookStore.com</a>
+            <p>Darn it.</p>
+            <a href="#" className="inline-block mt-6 text-sm">To get your book published contact trachit752@gmail.com</a>
         </div>
         {/* Quick links */}
 
          <div className="col-span-2 grid grid-cols-2 md:grid-cols-3 gap-6">
            <div>
-            <h1 className="text-xl font-semibold">Quick Links</h1>
+            <h1 className=" hidden text-xl font-semibold">Quick Links</h1>
             <ul className="space-y-3 mt-6" >
                 <li className="footer-link">Home</li>
                 <li className="footer-link">About</li>
