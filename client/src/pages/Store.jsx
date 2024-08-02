@@ -3,18 +3,28 @@ import axios from 'axios'
 import BookCard from '../components/BookCard/BookCard.jsx'
 import {motion} from "framer-motion"
 import {SlideUp} from '../components/Hero/Hero.jsx'
+import Loader from '../components/spinner.jsx'
+
 const baseUrl = '/api/get-all-books'
 const Store = () => {
   const [Book, setBook] = useState([])
-
+  const [size , setSize] = useState(0)
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(baseUrl)
       setBook(response.data.data)
+      setSize(response.data.data.length)
     }
     fetch()
   }, [])
-
+  
+  if(size===0)
+    return(
+    <div className='h-screen flex items-center justify-center'>
+  <Loader></Loader>
+  </div>
+    )
+  else 
   return (
     <div className='mt-8 px-4'>
     <motion.h3

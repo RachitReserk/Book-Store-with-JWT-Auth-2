@@ -27,6 +27,7 @@ const BookDetails = () => {
     const id = useParams()
     const [Book, setBook] = useState()
     const baseUrl = `/api/get-book/${id.id}`
+    const [photo,setPhoto] = useState()
 
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
     const role = useSelector((state) => state.auth.role)  
@@ -35,6 +36,7 @@ const BookDetails = () => {
     const fetch = async () => {
       const response = await axios.get(baseUrl)
       setBook(response.data.data)
+      setPhoto(response.data.data.url)
     }
     const userFetch = async () => {
      const response = await axios.get('/api/userInfo',{headers})
@@ -81,13 +83,14 @@ const BookDetails = () => {
     <>
     {Book && (
         <div className='px-12 py-8 flex md:flex-row flex-col  gap-8'>
-        <div className='bg-yellow-100 rounded-2xl p-4 h-[80vh] lg:h-[88vh] w-full lg:w-[3/6] flex flex-col items-center justify-center'><img  className="h-[60vh] object-fit " src={Book.url} alt="" />
+        <div className='overflow-hidden relative bg-yellow-100 rounded-2xl w-full p-4 h-[100vh] md:w-[100vh] lg:w-[3/6] flex flex-col items-center justify-center'>
         {isLoggedIn === true  && role === "user" && (
-        <LightTooltip title={isClick ? "Remove from favourites" : "Add to favourites"} placement='top'><div className='transition duration-300 ease-in-out hover:scale-125'><Heart className='mt-4' isClick={isClick} onClick={() =>
+        <LightTooltip title={isClick ? "Remove from favourites" : "Add to favourites"} placement='top'><div className='md:block absolute hidden top-0 right-0 transition duration-300 ease-in-out hover:scale-125'><Heart className='mt-4' isClick={isClick} onClick={() =>
           {setClick(!isClick)
            favourite()
           }} /></div></LightTooltip>
         )}
+        <img  className="h-[60vh] " src={photo} alt="" />
         </div>
         <div className='p-4 w-full lg:w-3/6'>
         <h1 className='text-red-500 text-4xl font-semibold'>{Book.title}</h1>
@@ -97,7 +100,7 @@ const BookDetails = () => {
         <GrLanguage className='me-3'/>{Book.language}   
         </p>
         <p className='mt-4 text-3xl font-semibold'>
-           Price: Rs.{Book.price}
+           Price: ₹{Book.price}
         </p>
         <LightTooltip title="Add to cart" placement='top'>
         <div onClick={() => {

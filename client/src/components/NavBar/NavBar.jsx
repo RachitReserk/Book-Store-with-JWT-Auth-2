@@ -77,7 +77,7 @@ const Navbar = () => {
                        className="nav-menu"
                        date-delay = {menu.delay}
                        >
-                        <Link to={menu.path} className="inline-block px-2 py-2 text-2xl max-w-xs transition duration-300 ease-in-out hover:scale-110"
+                        <Link to={menu.path} className="inline-block px-2 py-2 text-2xl max-w-xs transition duration-300 ease-in-out hover:scale-150"
                         >
                             {menu.title}
                             </Link>
