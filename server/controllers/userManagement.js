@@ -15,24 +15,24 @@ userRouter.post('/sign-up',async(req,res) =>{
     if(username.length < 4){
         return res
         .status(400)
-        .json({message:"Username should be greater than 3"})
+        .json({message:"⚠️ Username should be greater than 3"})
     }
     const existingUsername = await User.findOne({username:username})
     if(existingUsername){
         return res
         .status(400)
-        .json({message:"Username already exists"})
+        .json({message:"⚠️ Username already exists"})
      }
      const existingEmail = await User.findOne({email:email})
      if(existingEmail){
         return res
         .status(400)
-        .json({message:"Email already exists"})
+        .json({message:"⚠️ Email already exists"})
      }
      if(password.length<=5){
         return res
         .status(400)
-        .json({message:"Password length should be more than 4"})
+        .json({message:"⚠️ Password length should be more than 4"})
      }
 
      const hashedPassword = await bcrypt.hash(password,10)

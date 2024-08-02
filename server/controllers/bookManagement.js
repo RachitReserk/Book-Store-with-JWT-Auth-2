@@ -90,6 +90,18 @@ bookRouter.get('/get-recent-books',async(req,res) => {
     }
 })
 
+bookRouter.get('/get-top-books',async(req,res) => {
+    try {
+        const books = await Book.find().sort({sold:-1}).limit(3)
+        return res.json({
+            status:"Success",
+            data:books
+        })    
+    } catch (error) {
+        return res.status(500).json({message:"Internal server error"})     
+    }
+})
+
 bookRouter.get('/get-book/:id',async(req,res) =>
     {
     try {

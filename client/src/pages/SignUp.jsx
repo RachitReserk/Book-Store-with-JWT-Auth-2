@@ -28,9 +28,33 @@ const SignUp = () => {
     toast("✅ Sign-Up successful")
   }
   } catch (error) {
-    console.log(error)
+    toast(error.response.data.message)
+    console.log(error.response.data)
   }
   }
+
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      console.log(navigator.geolocation.getCurrentPosition(success, error))
+    } else {
+      console.log("Geolocation not supported");
+    }
+  }
+
+  const success = async (position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+    const loca = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=YOUR_API_KEY`)
+    console.log(loca)
+    setuserInfo({...userInfo,address:loca.data.error_message})
+  }
+
+  function error() {
+    console.log("Unable to retrieve your location");
+    console.log()
+  }
+
   return (
     <div className='bg-yellow-100 lg:h-screen h-auto py-8 px-12 flex items-center justify-center'>
      <form onSubmit={submit} className='bg-yellow-200 rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6'>
@@ -74,7 +98,7 @@ const SignUp = () => {
         Email
         </label>
         <input 
-        type='text'
+        type='email'
         className='w-full mt-2 p-2 outline-none'
         placeholder='asd@gmail.com'
         name='email'
@@ -96,6 +120,8 @@ const SignUp = () => {
         onChange={change}
         required></textarea>
       </div>
+      <div className='text-center'>or</div>
+      <div onClick={getLocation} className='transition text-center duration-300 ease-in-out hover:scale-110 w-full bg-yellow-300 font-semibold py-2 rounded'>Auto Location</div>
       <div className='mt-4'>
         <button type="submit" className='transition duration-300 ease-in-out hover:scale-110 w-full bg-yellow-300 font-semibold py-2 rounded'>
           Sign-Up</button>

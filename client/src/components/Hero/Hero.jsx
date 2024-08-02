@@ -1,8 +1,7 @@
 import React from "react";
 import Boy from "/src/assets/boy.png";
-import { IoCartOutline } from "react-icons/io5";
 import {motion} from "framer-motion";
-import { Link } from "react-router-dom";
+
 
 export const SlideUp  = (delay) => {
   return{
@@ -47,14 +46,6 @@ const Hero = () => {
              whileInView = "show"
                className="text-m"> An invitation of stories, where readers explore endless literary treasures.</motion.p>
                <div  className="max-w-xs transition duration-300 ease-in-out hover:scale-110">
-              <Link to="/store">
-            <motion.button variants={SlideUp(1.8)}
-             initial = "hidden"
-             whileInView = "show" className="btn-primary inline-block  !mt-10">
-              <IoCartOutline className=" h-[23px] w-[23px] inline mr-2" />
-              Order Now
-            </motion.button>
-            </Link>
             </div>
           </div>
         <div>
