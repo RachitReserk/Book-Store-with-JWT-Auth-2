@@ -95,6 +95,10 @@ const BookDetails = () => {
           <img className='hover:border-red-300 border-double border-white border-8' src={Book.url} onClick={() => setPhoto(Book.url)} alt=''></img>
           <img className='hover:border-red-300 border-double border-white border-8' src={Book.url2} onClick={() => setPhoto(Book.url2)} alt=''></img>
         </div>
+        <div className='md:hidden absolute bottom-0 transition duration-300 ease-in-out hover:scale-125'><Heart className='mt-4' isClick={isClick} onClick={() =>
+          {setClick(!isClick)
+           favourite()
+          }} /></div>
         </div>
         <div className='p-4 w-full lg:w-3/6'>
         <h1 className='text-red-500 text-4xl font-semibold'>{Book.title}</h1>

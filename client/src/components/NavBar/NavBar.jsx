@@ -134,14 +134,14 @@ const Navbar = () => {
             )
             }
             <div className="flex gap-6 mb-5">
-        <Link to='/profile'>
+        <Link onClick={() => setOpen(!isOpen)} to='/profile'>
         <motion.div variants={Slidedown(1)}
         initial = "initial" animate = "animate">
             <button className= "max-w-xs transition duration-300 ease-in-out hover:scale-110 h-[50px] w-[50px] grid place-items-center rounded-full text-white bg-black">
                 <FaUserLarge className="h-[18px] w-[18px]" /></button>
         </motion.div>
         </Link>
-        <Link to='/cart'>
+        <Link onClick={() => setOpen(!isOpen)} to='/cart'>
         <motion.div variants={Slidedown(1)}
         initial = "initial" animate = "animate">
             <button className= "max-w-xs transition duration-300 ease-in-out hover:scale-110 h-[50px] w-[50px] grid place-items-center rounded-full text-white bg-black">
@@ -235,8 +235,8 @@ else
                          animate = "animate"
                          className="nav-menu flex gap-6"
                          date-delay = {0.3}>
-                        <Link to="/signin" className="inline-block px-2 py-2 text-2xl border-2 max-w-xs transition duration-300 ease-in-out hover:scale-110 bg-blue-200 rounded">Sign-in</Link>
-                        <Link to="/signup" className="inline-block px-2 py-2 text-2xl border-2 max-w-xs transition duration-300 ease-in-out hover:scale-110 rounded">Sign-up</Link>
+                        <Link onClick={() => setOpen(!isOpen)} to="/signin" className="inline-block px-2 py-2 text-2xl border-2 max-w-xs transition duration-300 ease-in-out hover:scale-110 bg-blue-200 rounded">Sign-in</Link>
+                        <Link onClick={() => setOpen(!isOpen)} to="/signup" className="inline-block px-2 py-2 text-2xl border-2 max-w-xs transition duration-300 ease-in-out hover:scale-110 rounded">Sign-up</Link>
                          </motion.li>
             </div>
       </div> 
