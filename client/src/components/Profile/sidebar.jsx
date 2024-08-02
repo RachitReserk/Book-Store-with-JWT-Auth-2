@@ -19,7 +19,7 @@ const sideBar = ({data}) => {
     <div className='mt-1 text-xl font-semibold lg:block'></div>
     </div>
     
-    <div className='w-full flex-col items-center justify-center hidden lg:flex'>
+    <div className='w-full flex-col items-center justify-center hidden md:flex'>
       <Link 
       to='/profile'
       className='font-semibold w-full py-2 text-center hover:bg-yellow-200 rounded trainsiion:all'
@@ -39,14 +39,36 @@ const sideBar = ({data}) => {
       Settings
       </Link>
       </div>
-      <div onClick={
+      
+      <div className='gap-1 items-center justify-center w-full py-2 flex text-center hover:bg-yellow-400 rounded trainsiion:all md:hidden'>
+      <Link 
+      to='/profile'
+      className='font-semibold w-full py-2 text-center hover:bg-yellow-200 rounded trainsiion:all'
+      >
+      Favourites
+      </Link>
+      <Link 
+      to='/profile/orderHistory'
+      className='font-semibold w-full py-2 text-center hover:bg-yellow-200 rounded trainsiion:all'
+      >
+      Order History
+      </Link>
+      <Link 
+      to='/profile/settings'
+      className='font-semibold w-full py-2 text-center hover:bg-yellow-200 rounded trainsiion:all'
+      >
+      Settings
+      </Link>
+      </div>
+
+      <div className='font-semibold bg-yellow-200 gap-1 items-center justify-center w-full py-2 flex text-center hover:bg-yellow-400 rounded trainsiion:all'>
+      <button onClick={
         () => {
         localStorage.clear()
         navigate('/')
         dispatch(authActions.logout())
         }
-      } className='cursor-pointer font-semibold bg-yellow-200 gap-1 items-center justify-center w-full py-2 flex text-center hover:bg-yellow-400 rounded trainsiion:all'>
-      <button> Logout</button><LuLogOut />
+      }> Logout</button><LuLogOut />
     </div>
     </div>
   )
