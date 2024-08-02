@@ -9,14 +9,6 @@ const bookSchema = new mongoose.Schema({
     type:String,
     required:true,
   },
-  url3:{
-    type:String,
-    required:true,
-  },
-  url4:{
-    type:String,
-    required:true,
-  },
   title:{
     type:String,
     required:true

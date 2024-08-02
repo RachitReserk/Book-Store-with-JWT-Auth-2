@@ -83,14 +83,18 @@ const BookDetails = () => {
     <>
     {Book && (
         <div className='px-12 py-8 flex md:flex-row flex-col  gap-8'>
-        <div className='overflow-hidden relative bg-yellow-100 rounded-2xl w-full p-4 h-[100vh] md:w-[100vh] lg:w-[3/6] flex flex-col items-center justify-center'>
+        <div className='overflow-hidden relative bg-yellow-100 rounded-2xl w-full p-4 md:h-[90vh] h-[100vh] md:w-[100vh] lg:w-[3/6] flex flex-col items-center justify-center'>
         {isLoggedIn === true  && role === "user" && (
         <LightTooltip title={isClick ? "Remove from favourites" : "Add to favourites"} placement='top'><div className='md:block absolute hidden top-0 right-0 transition duration-300 ease-in-out hover:scale-125'><Heart className='mt-4' isClick={isClick} onClick={() =>
           {setClick(!isClick)
            favourite()
           }} /></div></LightTooltip>
         )}
-        <img  className="h-[60vh] " src={photo} alt="" />
+        <img  className="h-[60vh] hover:border-red-300 border-double border-white border-8" src={photo} alt="" />
+        <div className='mt-8 flex flex-row gap-4 items-center justify-center h-[150px] w-[100px]'>
+          <img className='hover:border-red-300 border-double border-white border-8' src={Book.url} onClick={() => setPhoto(Book.url)} alt=''></img>
+          <img className='hover:border-red-300 border-double border-white border-8' src={Book.url2} onClick={() => setPhoto(Book.url2)} alt=''></img>
+        </div>
         </div>
         <div className='p-4 w-full lg:w-3/6'>
         <h1 className='text-red-500 text-4xl font-semibold'>{Book.title}</h1>

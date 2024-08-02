@@ -18,7 +18,7 @@ const BookCard = ({ data }) => {
                                 <h3 className = "text-xl font-semibold">{data.title}</h3>
                                 <p className="text-l">by {data.author}</p>
                                 <p className="text-xl text-red-600">₹{data.price}</p>
-                                </div> 
+                              </div> 
                             </motion.div>
     </Link>
     </div>
