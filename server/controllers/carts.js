@@ -42,7 +42,6 @@ try {
         message:"Removed from cart"
      })
 } catch (error) {
-    console.log(error)
     return res.status(500).json({message:"Internal Server Error"})
 }    
 })
@@ -50,9 +49,8 @@ try {
 cartRouter.get("/get-cart",authenticateToken,async(req,res) => {
     try {
         const {id} = req.headers
-        const userData = await User.findById(id)
+        const userData = await User.findById(id).populate("cart")
         const cart = userData.cart.reverse()
-        console.log(cart)
         return res.json({
             status:"success",
             data:cart
