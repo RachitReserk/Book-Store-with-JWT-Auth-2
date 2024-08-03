@@ -9,9 +9,9 @@ const Banner = () => {
   return (
     <section>
         <div className="container py-24">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-14 place-items-center ">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap -24 place-items-center justify-between">
 
-             <div className="realtive h-[450px] w-[450px]">
+             <div className="">
                 <motion.img 
                 initial = {{
                     opacity: 0,
@@ -35,7 +35,7 @@ const Banner = () => {
                     delay:0.5,
                     scale: {duration: 0.5},
                 }}
-                src = {BannerPng} alt="" className="relative z-10 w-full lg:max-[350px] img-shadow" />
+                src = {BannerPng} alt="" className="w-[450px] img-shadow mt-16" />
 
              </div>
 
@@ -54,7 +54,7 @@ const Banner = () => {
                  <Link to="/store">
             <motion.button variants={SlideUp(1.8)}
              initial = "hidden"
-             whileInView = "show" className=" btn-primary inline-block  !mt-10">
+             whileInView = "show" className="ml-[100px] justify-center items-center btn-primary inline-block  !mt-10">
               <IoCartOutline className="h-[23px] w-[23px] inline mr-2" />
               Order Now
             </motion.button>
