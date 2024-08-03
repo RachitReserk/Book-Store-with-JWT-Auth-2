@@ -29,7 +29,7 @@ userRouter.post('/sign-up',async(req,res) =>{
         .status(400)
         .json({message:"⚠️ Email already exists"})
      }
-     if(password.length<=5){
+     if(password.length<=4){
         return res
         .status(400)
         .json({message:"⚠️ Password length should be more than 4"})
