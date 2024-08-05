@@ -61,14 +61,14 @@ const sideBar = ({data}) => {
       </Link>
       </div>
 
-      <div className='font-semibold bg-yellow-200 gap-1 items-center justify-center w-full py-2 flex text-center hover:bg-yellow-400 rounded trainsiion:all'>
-      <button onClick={
+      <div onClick={
         () => {
         localStorage.clear()
         navigate('/')
         dispatch(authActions.logout())
         }
-      }> Logout</button><LuLogOut />
+      } className='cursor-pointer font-semibold bg-yellow-200 gap-1 items-center justify-center w-full py-2 flex text-center hover:bg-yellow-400 rounded trainsiion:all'>
+      <button>Logout</button><LuLogOut />
     </div>
     </div>
   )

@@ -155,8 +155,7 @@ const Navbar = () => {
   </nav>;
 
 else
-    return <nav className="z-[50] container mx-auto flex justify-between items-center font-league">
-      
+    return <nav>
       <div className="z-[50] container mx-auto flex justify-between items-center font-league">
           <motion.img
           initial = {{opacity : 0}}
