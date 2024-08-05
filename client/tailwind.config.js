@@ -19,6 +19,9 @@ module.exports = {
           sans: ["Roboto Mono"],
           league:["League Gothic"],
         },
+        scale:{
+        '200': '2',
+        },
         Container:{
           center: true,
           padding:{

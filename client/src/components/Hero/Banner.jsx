@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import BannerPng from '../../assets/bookpng.png'
+import BannerPng from '../../assets/banner2.jpg'
 import { SlideUp } from './Hero'
 import { Link } from 'react-router-dom'
 import { IoCartOutline } from "react-icons/io5";
@@ -35,7 +35,7 @@ const Banner = () => {
                     delay:0.5,
                     scale: {duration: 0.5},
                 }}
-                src = {BannerPng} alt="" className="w-[450px] img-shadow mt-16" />
+                src = {BannerPng} alt="" className="rounded-full md:w-[280px] lg:w-[65vh] img-shadow mt-16" />
 
              </div>
 
@@ -46,10 +46,10 @@ const Banner = () => {
                  variants={SlideUp(1)}
                  initial = "hidden"
                  whileInView="show"
-                className="text-6xl uppercase font-semibold font-league">Your Next Great Read Awaits!</motion.h1>
+                className="text-6xl uppercase font-semibold font-league">Your Success, Our Notes!</motion.h1>
                 <motion.p variants={SlideUp(1.2)}
                  initial = "hidden"
-                 whileInView="show">Explore our diverse collection of books and find your next favorite read. Your literary adventure starts here!</motion.p>
+                 whileInView="show">Transforming Study Sessions with High-Quality, Expert-Curated Class Notes!</motion.p>
                  <div className='hover:scale-110'>
                  <Link to="/store">
             <motion.button variants={SlideUp(1.8)}

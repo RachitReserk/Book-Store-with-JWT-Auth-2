@@ -1,5 +1,5 @@
 import React from "react"
-import Logo from '/src/assets/bookstore.png'
+import Logo from '/src/assets/main-logo.png'
 import { FaUserLarge } from "react-icons/fa6";
 import { FaCartShopping } from "react-icons/fa6";
 import {motion } from 'framer-motion';
@@ -61,7 +61,7 @@ const Navbar = () => {
         transition={{duration : 0.8,delay : 0.5}}
         src={Logo}
         alt=""
-        className="w-24 block"
+        className="ml-4 w-24 block scale-200"
         />
          <div className= "hidden md:block">
            <ul className= "flex gap-12">
@@ -155,7 +155,8 @@ const Navbar = () => {
   </nav>;
 
 else
-    return <nav className="">
+    return <nav className="z-[50] container mx-auto flex justify-between items-center font-league">
+      
       <div className="z-[50] container mx-auto flex justify-between items-center font-league">
           <motion.img
           initial = {{opacity : 0}}
@@ -163,7 +164,7 @@ else
           transition={{duration : 0.8,delay : 0.5}}
           src={Logo}
           alt=""
-          className="w-24 block"
+          className="ml-4 w-24 block scale-200"
           />
            <div className= "hidden md:block">
              <ul className= "flex gap-12">
