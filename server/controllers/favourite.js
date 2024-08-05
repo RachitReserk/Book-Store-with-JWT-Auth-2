@@ -6,15 +6,15 @@ import authenticateToken from '../utils/userAuth.js'
 
 favRouter.put('/put-fav',authenticateToken,async(req,res) => {
 try {
-    const {bookid , id} = req.headers
+    const {noteid , id} = req.headers
     const userData = await User.findById(id);
-    const isBookFavourite = userData.favourites.includes(bookid)
-    if(isBookFavourite)
+    const isNoteFavourite = userData.favourites.includes(noteid)
+    if(isNoteFavourite)
         {
-            return res.status(200).json({message:"Book already favourite"})
+            return res.status(200).json({message:"Note already favourite"})
         }
-    await User.findByIdAndUpdate(id,{$push:{favourites:bookid}})
-    return res.status(200).json({message:"Book added to favourites"})
+    await User.findByIdAndUpdate(id,{$push:{favourites:noteid}})
+    return res.status(200).json({message:"Note added to favourites"})
 } catch (error) {
     return res.status(500).json({message:"Internal Server error"})
 }

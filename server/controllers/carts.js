@@ -5,36 +5,36 @@ import User from '../models/user.js'
 
 cartRouter.put("/add-to-cart",authenticateToken,async (req,res) => {
     try {
-         const {bookid,id} = req.headers;
+         const {noteid,id} = req.headers;
          const userData = await User.findById(id);
-         const isBookFavourite = userData.cart.includes(bookid)
-         if(isBookFavourite){
+         const isNoteFavourite = userData.cart.includes(noteid)
+         if(isNoteFavourite){
             return res.json(
                 {
                     status:"Success",
-                    message:"Book is already in cart"
+                    message:"Note is already in cart"
                 }
             )
          }
          await User.findByIdAndUpdate(id,{
-            $push:{ cart:bookid}
+            $push:{ cart:noteid}
          })
 
          return res.json({
             status:"Success",
-            "message":"Book added to cart"
+            "message":"Note added to cart"
          })
     } catch (error) {
         return res.status(500).json({message:"Internal server error"})
     }
 })
 
-cartRouter.put("remove-from-cart/:bookid",authenticateToken,async (req,res) => {
+cartRouter.put("remove-from-cart/:noteid",authenticateToken,async (req,res) => {
 try {
-    const {bookid} = req.params
+    const {noteid} = req.params
     const {id} = req.headers
     await User.findByIdAndUpdate(id,{
-        $pull:{cart:bookid}
+        $pull:{cart:noteid}
     })
 
     return res.json({
