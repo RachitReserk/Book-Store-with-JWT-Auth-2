@@ -70,8 +70,8 @@ const NoteDetails = () => {
 
   const handleCart = async () => {
     const response = await axios.put("/api/add-to-cart",{},{headers})
-    if(response.data.message === 'Notes is already in cart'){
-    toast("Notes is already in cart")
+    if(response.data.message === 'Note is already in cart'){
+    toast("Notes are already in cart")
     }
     else{
     toast("Notes added to cart !")

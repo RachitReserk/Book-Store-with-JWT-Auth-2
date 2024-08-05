@@ -29,7 +29,7 @@ cartRouter.put("/add-to-cart",authenticateToken,async (req,res) => {
     }
 })
 
-cartRouter.put("remove-from-cart/:noteid",authenticateToken,async (req,res) => {
+cartRouter.put("/remove-from-cart/:noteid",authenticateToken,async (req,res) => {
 try {
     const {noteid} = req.params
     const {id} = req.headers
