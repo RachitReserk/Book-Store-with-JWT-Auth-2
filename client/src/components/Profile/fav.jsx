@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import BookCard from '../BookCard/BookCard'
+import NoteCard from '../NoteCard/NoteCard'
 import {motion} from "framer-motion"
 import { SlideUp } from '../Hero/Hero'
 import { TbMoodEmpty } from "react-icons/tb"
 import Loader from '../spinner'
 
 const fav = () => {
-  const [favbook,setFavbook] = useState()
+  const [FavNote,setFavNote] = useState()
   const headers = {
     id:localStorage.getItem("id"),
     authorization:`bear ${localStorage.getItem("token")}`
@@ -17,19 +17,19 @@ useEffect(() => {
   const fetch = async () => {
   const response = await axios.get('/api/get-fav',{headers})
   setSize(response.data.data.length)
-  setFavbook(response.data.data)
+  setFavNote(response.data.data)
   }
   fetch()
 },[])
 
-  if(!favbook)
+  if(!FavNote)
    return (
    <div className='flex text-7xl h-screen font-league flew-col items-center justify-center'>
     <Loader></Loader>
    </div>
   )
 
-  else if(favbook && size === 0)
+  else if(FavNote && size === 0)
   return ( 
     <div>
         <div className='flex text-7xl h-screen font-league flew-col items-center justify-center'>
@@ -47,9 +47,9 @@ useEffect(() => {
          whileInView= "show"
          className="text-4xl text-center font-league font-semibold underline uppercase">Favourites</motion.h3>
          <div className='my-8 grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-4'>
-    {favbook && favbook.map((items,i) => (
+    {FavNote && FavNote.map((items,i) => (
       <div key={i}>
-      <BookCard data={items}></BookCard>
+      <NoteCard data={items}></NoteCard>
       </div>
     ))}
      </div>

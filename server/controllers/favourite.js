@@ -20,12 +20,12 @@ try {
 }
 })
 
-favRouter.put("/remove-from-fav/:bookid",authenticateToken,async (req,res) => {
+favRouter.put("/remove-from-fav/:noteid",authenticateToken,async (req,res) => {
     try {
-        const {bookid} = req.params
+        const {noteid} = req.params
         const {id} = req.headers
         await User.findByIdAndUpdate(id,{
-            $pull:{favourites:bookid}
+            $pull:{favourites:noteid}
         })
     
         return res.json({
@@ -33,7 +33,6 @@ favRouter.put("/remove-from-fav/:bookid",authenticateToken,async (req,res) => {
             message:"Removed from favourites"
          })
     } catch (error) {
-        console.log(error)
         return res.status(500).json({message:"Internal Server Error"})
     }    
     })
@@ -42,10 +41,10 @@ favRouter.get('/get-fav',authenticateToken,async (req,res) => {
     try {
         const {id} = req.headers
         const userData = await User.findById(id).populate("favourites");
-        const favouriteBooks = userData.favourites
+        const favouriteNotes = userData.favourites
         return res.json({
             status:"success",
-            data:favouriteBooks
+            data:favouriteNotes
         })
         } catch (error) {
         return res.status(500).json({message:"Internal Server error"})

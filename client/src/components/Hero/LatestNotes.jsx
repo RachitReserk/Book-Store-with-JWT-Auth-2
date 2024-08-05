@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import BookCard from '../BookCard/BookCard.jsx'
+import NoteCard from '../NoteCard/NoteCard.jsx'
 import {motion} from "framer-motion"
 import {SlideUp} from './Hero.jsx'
-const baseUrl = '/api/get-recent-books'
 
-const LatestBooks = () => {
-  const [Book, setBook] = useState([])
+const baseUrl = '/api/get-recent-notes'
+
+const LatestNotes = () => {
+  const [Notes, setNotes] = useState([])
 
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(baseUrl)
-      setBook(response.data.data)
+      setNotes(response.data.data)
     }
     fetch()
   }, [])
@@ -24,9 +25,9 @@ const LatestBooks = () => {
          whileInView= "show"
          className="text-4xl text-center font-league font-semibold uppercase py-8">Recently Added</motion.h3>
       <div className='my-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
-        {Book && Book.map((item, i) => (
+        {Notes && Notes.map((item, i) => (
           <div key={i}>
-            <BookCard data={item} />
+            <NoteCard data={item} />
           </div>
         ))}
       </div>
@@ -34,4 +35,4 @@ const LatestBooks = () => {
   )
 }
 
-export default LatestBooks
+export default LatestNotes

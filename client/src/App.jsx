@@ -13,7 +13,7 @@ import Fav from './components/Profile/fav.jsx'
 import Profile from './pages/Profile.jsx'
 import Cart from './pages/Cart.jsx'
 import Setting from './components/Profile/setting.jsx'
-import BookDetails from './components/BookDetails/BookDetails.jsx'
+import NoteDetails from './components/NoteDetails/NoteDetails.jsx'
 import { ToastContainer} from 'react-toastify';
 import { useDispatch , useSelector } from 'react-redux'
 import { authActions } from './store/auth.js'
@@ -60,7 +60,7 @@ const App = () => {
            <Route path='/profile/orderHistory' element={<UserHistory/>}></Route>
            <Route path='/profile/settings' element={<Setting/>}></Route>
           </Route>
-          <Route path='/book-details/:id' element={<BookDetails/>}></Route>
+          <Route path='/note-details/:id' element={<NoteDetails/>}></Route>
         </Routes>
         <Footer />
     </div>

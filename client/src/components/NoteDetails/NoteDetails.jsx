@@ -22,11 +22,11 @@ const LightTooltip = styled(({ className, ...props }) => (
   },
 }));
 
-const BookDetails = () => {
+const NoteDetails = () => {
     const [isClick, setClick] = useState(false);
     const id = useParams()
-    const [Book, setBook] = useState()
-    const baseUrl = `/api/get-book/${id.id}`
+    const [Note, setNote] = useState()
+    const baseUrl = `/api/get-note/${id.id}`
     const [photo,setPhoto] = useState()
 
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
@@ -35,8 +35,8 @@ const BookDetails = () => {
   useEffect( () => {
     const fetch = async () => {
       const response = await axios.get(baseUrl)
-      setBook(response.data.data)
-      setPhoto(response.data.data.url)
+      setNote(response.data.data)
+      setPhoto(response.data.data.url[0])
     }
     const userFetch = async () => {
      const response = await axios.get('/api/userInfo',{headers})
@@ -51,12 +51,12 @@ const BookDetails = () => {
   const headers = {
     id:localStorage.getItem("id"),
     authorization:`bear ${localStorage.getItem("token")}`,
-    bookid:id.id,
+    noteid:id.id,
   }
 
   const favourite = async () => {
   const response = await axios.put("/api/put-fav",{},{headers})
-  if(response.data.message === 'Book already favourite'){
+  if(response.data.message === 'Note already favourite'){
     const responsex = await axios.put(`/api/remove-from-fav/${id.id}`,{},{headers}) 
       toast("Removed from favourites")
       setClick(false)
@@ -70,18 +70,17 @@ const BookDetails = () => {
 
   const handleCart = async () => {
     const response = await axios.put("/api/add-to-cart",{},{headers})
-    console.log(response)
-    if(response.data.message === 'Book is already in cart'){
-    toast("Book is already in cart")
+    if(response.data.message === 'Notes is already in cart'){
+    toast("Notes is already in cart")
     }
     else{
-    toast("Book added to cart !")
+    toast("Notes added to cart !")
     }
   }
 
   return (
     <>
-    {Book && (
+    {Note && (
         <div className='px-12 py-8 flex md:flex-row flex-col  gap-8'>
         <div className='overflow-hidden relative bg-yellow-100 rounded-2xl w-full p-4 md:h-[90vh] h-[100vh] md:w-[100vh] lg:w-[3/6] flex flex-col items-center justify-center'>
         {isLoggedIn === true  && role === "user" && (
@@ -92,8 +91,7 @@ const BookDetails = () => {
         )}
         <img  className="h-[60vh] hover:border-red-300 border-double border-white border-8" src={photo} alt="" />
         <div className='mt-8 flex flex-row gap-4 items-center justify-center h-[150px] w-[100px]'>
-          <img className='hover:border-red-300 border-double border-white border-8' src={Book.url} onClick={() => setPhoto(Book.url)} alt=''></img>
-          <img className='hover:border-red-300 border-double border-white border-8' src={Book.url2} onClick={() => setPhoto(Book.url2)} alt=''></img>
+          <img className='hover:border-red-300 border-double border-white border-8' src={Note.url[0]} onClick={() => setPhoto(Note.url)} alt=''></img>
         </div>
         <div className='md:hidden absolute bottom-0 transition duration-300 ease-in-out hover:scale-125'><Heart className='mt-4' isClick={isClick} onClick={() =>
           {setClick(!isClick)
@@ -101,14 +99,14 @@ const BookDetails = () => {
           }} /></div>
         </div>
         <div className='p-4 w-full lg:w-3/6'>
-        <h1 className='text-red-500 text-4xl font-semibold'>{Book.title}</h1>
-        <p className='mt-1'>by {Book.author}</p>
-        <p className='mt-4 text-xl'>{Book.desc}</p>
+        <h1 className='text-red-500 text-4xl font-semibold'>{Note.title}</h1>
+        <p className='mt-1'>by {Note.author}</p>
+        <p className='mt-4 text-xl'>{Note.desc}</p>
         <p className='flex mt-4 items-center justify-start'>
-        <GrLanguage className='me-3'/>{Book.language}   
+        <GrLanguage className='me-3'/>{Note.language}   
         </p>
         <p className='mt-4 text-3xl font-semibold'>
-           Price: ₹{Book.price}
+           Price: ₹{Note.price}
         </p>
         <LightTooltip title="Add to cart" placement='top'>
         <div onClick={() => {
@@ -124,7 +122,7 @@ const BookDetails = () => {
         </div> 
        </div>
     )}
-    {!Book && (
+    {!Note && (
         <div className='h-screen flex items-center justify-center'>
             <Spinner></Spinner>
         </div>
@@ -133,4 +131,4 @@ const BookDetails = () => {
   )
 }
 
-export default BookDetails
+export default NoteDetails

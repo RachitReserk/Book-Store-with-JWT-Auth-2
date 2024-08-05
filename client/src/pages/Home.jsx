@@ -1,16 +1,16 @@
-import React, { useState , useEffect} from 'react'
+import React from 'react'
 import Hero from '../components/Hero/Hero'
-import LatestBooks from '../components/Hero/LatestBooks'
-import TopSellers from '../components/Hero/TopSellers'
+import LatestNotes from '../components/Hero/LatestNotes'
+import MostLiked from '../components/Hero/MostLiked'
 import Banner from '../components/Hero/Banner'
 
 const Home = () => {
   return (
     <div>
       <Hero></Hero>
-      <LatestBooks></LatestBooks>
+      <LatestNotes></LatestNotes>
       <Banner></Banner>
-      <TopSellers></TopSellers>
+      <MostLiked></MostLiked>
     </div>
   )
 }

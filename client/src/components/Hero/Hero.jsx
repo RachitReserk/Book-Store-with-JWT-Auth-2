@@ -64,8 +64,6 @@ const Hero = () => {
       }}
           src={Banner1} alt=""  className="rounded-full w-[300px] md:w-[450px] img-shadow mt-16"/>
         </div>
-           
-
       </div>
       
     </div>
