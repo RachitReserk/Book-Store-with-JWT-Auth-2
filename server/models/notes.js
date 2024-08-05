@@ -1,15 +1,19 @@
 import mongoose from 'mongoose'
 
-const bookSchema = new mongoose.Schema({
+const notesSchema = new mongoose.Schema({
   url:{
-    type:String,
-    required:true,
-  },
-  url2:{
-    type:String,
+    type:Array,
     required:true,
   },
   title:{
+    type:String,
+    required:true
+  },
+  semester:{
+  type:String,
+  required:true
+  },
+  subject:{
     type:String,
     required:true
   },
@@ -32,8 +36,12 @@ const bookSchema = new mongoose.Schema({
   sold:{
     type:Number,
     default:0
+  },
+  likes:{
+    type:Number,
+    default:0
   }
 },{timestamps:true})
 
-const Book = mongoose.model("books",bookSchema)
-export default Book
+const Notes = mongoose.model("notes",notesSchema)
+export default Notes

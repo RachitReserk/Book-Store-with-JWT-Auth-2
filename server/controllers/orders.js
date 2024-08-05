@@ -2,7 +2,7 @@ import express from 'express'
 const orderRouter = express.Router()
 import authenticateToken from '../utils/userAuth.js'
 import Order from '../models/order.js'
-import Book from '../models/books.js'
+import Notes from '../models/notes.js'
 import User from '../models/user.js'
 
 orderRouter.post('/place-order',authenticateToken,async (req,res) => {
@@ -10,7 +10,7 @@ orderRouter.post('/place-order',authenticateToken,async (req,res) => {
         const {id} = req.headers
         const {order} = req.body
         for(const orderData of order){
-        const newOrder = new Order({user:id , book:orderData.id})
+        const newOrder = new Order({user:id , note:orderData.id})
         const orderDataFromDb = await newOrder.save()
     
         await User.findByIdAndUpdate(id,{
@@ -38,7 +38,7 @@ try {
     const {id} = req.headers
     const userData = await User.findById(id).populate({
         path:"orders",
-        populate:{path:"book"}
+        populate:{path:"note"}
     })
     const orderData = userData.orders.reverse();
     return res.json({
@@ -54,7 +54,7 @@ try {
 orderRouter.get('/get-all-order-history', authenticateToken , async (req,res) => {
     try {
         const userData = await User.find().populate({
-        path:"book"
+        path:"note"
         })
         .populate({
         path:"user"

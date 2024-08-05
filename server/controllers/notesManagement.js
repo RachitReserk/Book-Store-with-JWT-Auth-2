@@ -1,119 +1,122 @@
 import express from 'express';
-const bookRouter = express.Router();
+const notesRouter = express.Router();
 
 import User from '../models/user.js'
 import authenticateToken from '../utils/userAuth.js'
-import Book from '../models/books.js'
+import Notes from '../models/notes.js'
 
-bookRouter.post('/add-book',authenticateToken, async(req,res) => {
+notesRouter.post('/add-notes',authenticateToken, async(req,res) => {
 try {
     const {id} = req.headers
     const user = await User.findById(id)
     if(user.role !== 'admin'){
     return res.status(400).json({message:'NO ACCESS TO PERFORM THIS ACTION'})
     }
-    const book = new Book({
+    const note = new Notes({
     url:req.body.url,
     title:req.body.title,
     author:req.body.author,
+    subject:req.body.subject,
+    semester:req.body.semester,
     price:req.body.price,
     desc:req.body.desc,
     language:req.body.language
     })
-    await book.save();
-    res.status(200).json({message:"book stored !"})
+    await note.save();
+    res.status(200).json({message:"note stored !"})
 } catch (error) {
    return res.status(500).json({message:"Internal server error"}) 
 }
 })
 
-bookRouter.put('/update-book',authenticateToken, async(req,res) => {
+notesRouter.put('/update-note',authenticateToken, async(req,res) => {
     try {
     const {id} = req.headers
     const user = await User.findById(id)
     if(user.role !== 'admin'){
     return res.status(400).json({message:'NO ACCESS TO PERFORM THIS ACTION'})
     }
-        const {bookid} = req.headers
-        await Book.findByIdAndUpdate(bookid , {
+        const {noteid} = req.headers
+        await Notes.findByIdAndUpdate(noteid , {
         url:req.body.url,
         title:req.body.title,
+        semester:req.body.semester,
         author:req.body.author,
         price:req.body.price,
         desc:req.body.desc,
         language:req.body.language
         })
 
-        res.status(200).json({message:"book updated !"})
+        res.status(200).json({message:"note updated !"})
     } catch (error) {
        return res.status(500).json({message:"Internal server error"}) 
     }
     })
 
-bookRouter.delete("/delete-book",authenticateToken,async(req,res)=>{
+notesRouter.delete("/delete-note",authenticateToken,async(req,res)=>{
     try {
         const {id} = req.headers
         const user = await User.findById(id)
         if(user.role !== 'admin'){
         return res.status(400).json({message:'NO ACCESS TO PERFORM THIS ACTION'})
         }
-        const {bookId} = req.headers
-        await Book.findByIdAndDelete(bookId);
-        return res.status(200).json({message:"Book deleted"})
+        const {noteid} = req.headers
+        await Notes.findByIdAndDelete(noteid);
+        return res.status(200).json({message:"Note deleted"})
 
     } catch (error) {
        return res.status(500).json({message:"Internal server error"}) 
 } 
 })
 
-bookRouter.get('/get-all-books',async(req,res) => {
+notesRouter.get('/get-all-notes',async(req,res) => {
     try {
-        const books = await Book.find().sort({createdAt: -1})
+        const notes = await Notes.find().sort({createdAt: -1})
         return res.json({
             status:"Success",
-            data:books
+            data:notes
         })    
     } catch (error) {
         return res.status(500).json({message:"Internal server error"})     
     }
 })
 
-bookRouter.get('/get-recent-books',async(req,res) => {
+notesRouter.get('/get-recent-notes',async(req,res) => {
     try {
-        const books = await Book.find().sort({createdAt: -1}).limit(4)
+        const notes = await Notes.find().sort({createdAt: -1}).limit(4)
         return res.json({
             status:"Success",
-            data:books
+            data:notes
         })    
     } catch (error) {
         return res.status(500).json({message:"Internal server error"})     
     }
 })
 
-bookRouter.get('/get-top-books',async(req,res) => {
+notesRouter.get('/get-top-notes',async(req,res) => {
     try {
-        const books = await Book.find().sort({sold:-1}).limit(3)
+        const notes = await Notes.find().sort({likes:-1}).limit(3)
         return res.json({
             status:"Success",
-            data:books
+            data:notes
         })    
     } catch (error) {
         return res.status(500).json({message:"Internal server error"})     
     }
 })
 
-bookRouter.get('/get-book/:id',async(req,res) =>
+notesRouter.get('/get-note/:id',async(req,res) =>
     {
     try {
         const {id} = req.params;
-        const book = await Book.findById(id)
+        const note = await Notes.findById(id)
         return res.json({
             status:"success",
-            data: book
+            data: note
         })    
     } catch (error) {
         return res.status(500).json({message:"Internal server error"})      
     }
     })
 
-export default bookRouter
+export default notesRouter

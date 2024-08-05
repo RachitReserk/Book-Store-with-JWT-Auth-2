@@ -5,7 +5,7 @@ const orderSchema = new mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:"user"
     },
-    book:{
+    note:{
         type:mongoose.Types.ObjectId,
         ref:"user" 
     },

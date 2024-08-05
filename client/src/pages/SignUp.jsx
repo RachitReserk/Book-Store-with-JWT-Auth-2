@@ -59,9 +59,13 @@ const SignUp = () => {
     <div className='bg-yellow-100 lg:h-screen h-auto py-8 px-12 flex items-center justify-center'>
      <form onSubmit={submit} className='bg-yellow-200 rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6'>
      <motion.h1
-            variants={SlideUp(0.1)}
-            initial = "hidden"
-            whileInView = "show" 
+            initial = {{opacity: 0 , rotate: 20 , x:200 , y:100}}
+            whileInView={{ opacity: 1, rotate: 0, x: 0, y: 0}}
+            transition={{
+              duration:0.5,
+              delay:0.5,
+              scale: {duration: 0.5},
+          }}
             className="">
      <p className='text-xl'>Sign-Up</p>
      <div className='mt-4'>

@@ -21,8 +21,7 @@ const userSchema = new mongoose.Schema({
     },
     address: {
         type:String,
-        //required:true,
-        default:"https://cdn-icons-png.flaticon.com/512/1326/1326405.png"
+        required:true
     },
     role:{
         type:String,
