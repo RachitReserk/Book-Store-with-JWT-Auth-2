@@ -17,19 +17,30 @@ import NoteDetails from './components/NoteDetails/NoteDetails.jsx'
 import { ToastContainer} from 'react-toastify';
 import { useDispatch , useSelector } from 'react-redux'
 import { authActions } from './store/auth.js'
-
+import axios from 'axios'
 const App = () => {
   const dispatch = useDispatch()
   const role = useSelector((state) => state.auth.role)
+  
   useEffect(() => {
-    if(
-      localStorage.getItem("id") &&
-      localStorage.getItem("token") &&
-      localStorage.getItem("role")
-    ){
-      dispatch(authActions.login())
-      dispatch(authActions.changeRole(localStorage.getItem("role")))
+    const headers = {
+      id:localStorage.getItem("id"),
+      authorization:`bear ${localStorage.getItem("token")}`
     }
+    const fetch = async() => {
+      const response = await axios.get('/api/userInfo',{headers})
+      if(response.data !== null){
+        if(
+          localStorage.getItem("id") &&
+          localStorage.getItem("token") &&
+          localStorage.getItem("role")
+        ){
+          dispatch(authActions.login())
+          dispatch(authActions.changeRole(localStorage.getItem("role")))
+        }
+      }
+    }
+    fetch()
   },[])
   return (
     <div className="scroll-smooth cursor-default realtive overflow-x-hidden bg-white2 text-dark">
