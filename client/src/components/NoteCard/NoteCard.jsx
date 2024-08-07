@@ -13,7 +13,7 @@ const NoteCard = ({ data }) => {
                             whileInView="show"
                              className="group bg-white/50 shadow-md p-3 flex items-center gap-3">
                               <img src={data.url[0]} alt="" 
-                              className=" w-[150px] image-shadow group-hover:scale-110 transition-all duration-500"/> 
+                              className="w-[150px] image-shadow group-hover:scale-110 transition-all duration-500"/> 
                               <div>
                                 <h3 className = "text-xl font-semibold">{data.title}</h3>
                                 <p className="text-l">by {data.author}</p>

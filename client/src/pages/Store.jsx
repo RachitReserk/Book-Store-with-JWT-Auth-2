@@ -4,6 +4,7 @@ import NoteCard from '../components/NoteCard/NoteCard.jsx'
 import {motion} from "framer-motion"
 import {SlideUp} from '../components/Hero/Hero.jsx'
 import Loader from '../components/spinner.jsx'
+import { TbMoodEmpty } from "react-icons/tb"
 
 const baseUrl = '/api/get-all-notes'
 const Store = () => {
@@ -53,7 +54,7 @@ const Store = () => {
   <Loader></Loader>
   </div>
     )
-  else 
+  else
   return (
     <div className='mt-8 h-screen w-screen px-4'>
     <motion.h3
@@ -61,9 +62,9 @@ const Store = () => {
        initial = "hidden"
        whileInView= "show"
        className="text-4xl text-center font-league font-semibold underline uppercase py-8">STORE</motion.h3>
+
        <div className='block md:flex flex-row'>
         <div className='mx-auto text-center'>
-          
         <div>
       <button
         id="dropdownCheckboxButton"
@@ -135,15 +136,23 @@ const Store = () => {
         </ul>
       </div>
     </div>
-
-          </div>
+</div>
+    {Copy.length > 0 && (
     <div className='my-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
-      {Copy.map((item, i) => (
-        <div key={i}>
-          <NoteCard data={item} />
+    {Copy.map((item, i) => (
+      <div key={i}>
+        <NoteCard data={item} />
+      </div>
+    ))}
+  </div>
+    )}
+    {Copy.length === 0 && (
+      <div className='h-[50vh]] w-[100vw]'>
+      <div className='flex text-7xl font-league flew-col items-center justify-center'>
+        <TbMoodEmpty size={90}/>No Notes? sad
         </div>
-      ))}
     </div>
+    )}
     </div>
   </div>
   )
