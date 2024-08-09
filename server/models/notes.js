@@ -13,6 +13,10 @@ const notesSchema = new mongoose.Schema({
   type:String,
   required:true
   },
+  branch:{
+    type:String,
+    required:true
+  },
   subject:{
     type:String,
     required:true

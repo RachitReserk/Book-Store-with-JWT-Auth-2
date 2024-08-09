@@ -13,6 +13,7 @@ const Store = () => {
   const [size , setSize] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
   const [sem,setSem] = useState("All")
+  const [branch,setBranch] = useState("All")
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -39,6 +40,21 @@ const Store = () => {
       case '3':
         setCopy(Notes.filter(note => note.semester === '3rd'));
         break;
+      case '4':
+          setCopy(Notes.filter(note => note.semester === '4th'));
+          break;
+      case '5':
+          setCopy(Notes.filter(note => note.semester === '5th'));
+          break;
+      case '6':
+          setCopy(Notes.filter(note => note.semester === '6th'));
+          break;
+      case '7':
+            setCopy(Notes.filter(note => note.semester === '7th'));
+            break;
+      case '8':
+            setCopy(Notes.filter(note => note.semester === '8th'));
+            break;  
       default:
         setCopy(Notes)
     }
@@ -46,6 +62,10 @@ const Store = () => {
 
   const handleRadio = (event) => {
     setSem(event.target.value)
+  }
+
+  const handleBranchRadio = (event) => {
+    setBranch(event.target.value)
   }
   
   if(size===0)
@@ -56,7 +76,7 @@ const Store = () => {
     )
   else
   return (
-    <div className='mt-8 h-screen w-screen px-4'>
+    <div className='mt-8 h-screen w-screen px-4 overflow-scroll overflow-x-hidden mb-8'>
     <motion.h3
        variants={SlideUp(0)}
        initial = "hidden"
@@ -64,7 +84,8 @@ const Store = () => {
        className="text-4xl text-center font-league font-semibold underline uppercase py-8">STORE</motion.h3>
 
        <div className='block md:flex flex-row'>
-        <div className='mx-auto text-center'>
+        <div className='mx-auto text-center flex flex-col gap-2'>
+        {/*Course*/}
         <div>
       <button
         id="dropdownCheckboxButton"
@@ -73,7 +94,81 @@ const Store = () => {
         type="button"
         onClick={toggleDropdown}
       >
-        Filter
+        Course
+        <svg
+          className="w-2.5 h-2.5 ms-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
+        
+      <div
+        id="dropdownDefaultCheckbox"
+        className={`mx-auto mt-2 z-10 ${isOpen ? 'block' : 'hidden'} w-[250px] bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`}
+      >
+        <div className='text-white'>Course</div>
+        <ul
+          className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdownCheckboxButton"
+        >
+          <div className="flex items-center mt-4 mb-4">
+    <input checked={branch === 'All'} onChange={handleBranchRadio} id="default-radio-1" type="radio" value="All" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <label htmlFor="default-radio-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">All</label>
+    </div>
+    <div className="flex items-center mt-4 mb-4">
+    <input checked={branch === '1'} onChange={handleBranchRadio} id="default-radio-1" type="radio" value="CSE" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <label htmlFor="default-radio-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">CSE</label>
+    </div>
+    <div className="flex items-center mt-4 mb-4">
+    <input checked={branch === '2'} onChange={handleBranchRadio} id="default-radio-1" type="radio" value="AI" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <label htmlFor="default-radio-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">AI</label>
+    </div>
+    <div className="flex items-center mt-4 mb-4">
+    <input checked={branch === '3'} onChange={handleBranchRadio} id="default-radio-1" type="radio" value="DS" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <label htmlFor="default-radio-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">DS</label>
+    </div>
+    <div className="flex items-center mt-4 mb-4">
+    <input checked={branch === '4'} onChange={handleBranchRadio} id="default-radio-1" type="radio" value="ECE" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <label htmlFor="default-radio-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">ECE</label>
+    </div>
+    <div className="flex items-center mt-4 mb-4">
+    <input checked={branch === '5'} onChange={handleBranchRadio} id="default-radio-1" type="radio" value="Bsc" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <label htmlFor="default-radio-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">BSC</label>
+    </div>
+    <div className="flex items-center mt-4 mb-4">
+    <input checked={branch === '6'} onChange={handleBranchRadio} id="default-radio-1" type="radio" value="BBA" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <label htmlFor="default-radio-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">BBA</label>
+    </div>
+    <div className="flex items-center mt-4 mb-4">
+    <input checked={branch === '7'} onChange={handleBranchRadio} id="default-radio-1" type="radio" value="Mtech" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <label htmlFor="default-radio-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Mtech</label>
+    </div>
+    <div className="flex items-center mt-4 mb-4">
+    <input checked={branch === '8'} onChange={handleBranchRadio} id="default-radio-1" type="radio" value="Phd" name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+    <label htmlFor="default-radio-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Phd</label>
+    </div>
+        </ul>
+      </div>
+
+    </div> 
+         
+       {/*Semester*/}
+        <div>
+      <button
+        id="dropdownCheckboxButton"
+        data-dropdown-toggle="dropdownDefaultCheckbox"
+        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        type="button"
+        onClick={toggleDropdown}
+      >
+        Semester
         <svg
           className="w-2.5 h-2.5 ms-3"
           aria-hidden="true"
@@ -135,8 +230,10 @@ const Store = () => {
     </div>
         </ul>
       </div>
+
     </div>
 </div>
+
     {Copy.length > 0 && (
     <div className='my-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
     {Copy.map((item, i) => (
